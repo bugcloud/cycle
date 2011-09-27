@@ -1,7 +1,11 @@
 <div class="cycle_records form">
     <h2><?php echo $title_for_layout; ?></h2>
     <?php 
-    if(isset($cycle_id)) { $cycle_id_action = '/'.$cycle_id; }
+    if(isset($cycle_id)) {
+      $cycle_id_action = '/'.$cycle_id;
+    } else {
+      $cycle_id_action = '/';
+    }
     echo $form->create('CycleRecord', array('type' => 'file', 'action' => 'add'.$cycle_id_action));?>
         <fieldset>
             <div class="tabs">

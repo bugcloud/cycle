@@ -60,24 +60,26 @@ class CycleHookHelper extends AppHelper {
     			// If the data is set at least (meaning admin_edit)
     			if(isset($this->data['CyclesNode'])) {
     				foreach($this->data['CyclesNode'] as $cycle_records) {
-    				 	foreach($cycle_records['CyclesNode'] as $k => $v) {    				 	
-	    					if($k == 'cycle_id') {
-	    						$cycles_selected[] = $v; 
-	    					}
-	    					if($k == 'position') {
-	    						// See, right here is where having multiple cycles would get screwed up. Unless we're combining cycles ... Or showing them all in the same position one after another. Otherwise, the form needs to change quite a bit, or the position is set on the cycle record which reduces flexibility...We'd then need to make a new cycle (group) record for each position EVEN IF the cycle had all the same records in it. Just so one node could have it one place and another node could have it another. Sounds like a waste.
-	    						$cycle_position = $v;
-	    					}
-	    					if($k == 'style') {	    						
-	    						$cycle_style = $v;
-	    					}
-	    					if($k == 'width') {
-	    						$cycle_width = $v;
-	    					}
-	    					if($k == 'height') {
-	    						$cycle_height = $v;
-	    					}
-    					}
+							if (is_array($cycle_records)) {
+								foreach($cycle_records['CyclesNode'] as $k => $v) {    				 	
+									if($k == 'cycle_id') {
+										$cycles_selected[] = $v; 
+									}
+									if($k == 'position') {
+										// See, right here is where having multiple cycles would get screwed up. Unless we're combining cycles ... Or showing them all in the same position one after another. Otherwise, the form needs to change quite a bit, or the position is set on the cycle record which reduces flexibility...We'd then need to make a new cycle (group) record for each position EVEN IF the cycle had all the same records in it. Just so one node could have it one place and another node could have it another. Sounds like a waste.
+										$cycle_position = $v;
+									}
+									if($k == 'style') {	    						
+										$cycle_style = $v;
+									}
+									if($k == 'width') {
+										$cycle_width = $v;
+									}
+									if($k == 'height') {
+										$cycle_height = $v;
+									}
+								}
+							}
     				}
     			}
     			// Set the drop down's options for cycles and preselect the currently chosen one if this is an admin_edit
