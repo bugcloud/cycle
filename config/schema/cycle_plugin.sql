@@ -1,7 +1,7 @@
 --
 -- Generation Time: May 28, 2010 at 01:01 PM
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE=NO_AUTO_VALUE_ON_ZERO;
 
 -- --------------------------------------------------------
 
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `cycles` (
   `created` timestamp NULL default NULL,
   `updated` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `cycles_nodes` (
   `width` int(2) unsigned NOT NULL default '500',
   `height` int(2) unsigned NOT NULL default '200',
   KEY `node_id` (`node_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `cycle_records` (
   `created` timestamp NULL default NULL,
   `updated` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
 
 -- --------------------------------------------------------
 
@@ -66,5 +66,5 @@ CREATE TABLE IF NOT EXISTS `cycle_records_cycles` (
   `cycle_record_id` int(11) unsigned NOT NULL,
   KEY `cycle_id` (`cycle_id`),
   KEY `cycle_record_id` (`cycle_record_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=FIXED;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
 
