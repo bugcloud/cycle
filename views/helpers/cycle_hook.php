@@ -48,6 +48,7 @@ class CycleHookHelper extends AppHelper {
     		
     			// Add select list (manually, the helper causes escape issues)
     			$jsBlock .= '$("#NodeCyclesContent").append(\'<div class="input select"><label for="CycleCycle">Use Cycle</label><select style="margin-top: 10px;" name="data[Cycle][Cycle][]" id="CycleCycle"><option value="">None</option></select></div>\'); ';
+    			$jsBlock .= '$("#CycleCycle").change(function() {$("#CyclesNodeCycleIdHidden").val( $("select#CycleCycle option:selected").val());}); ';
     			// Only allowing one for now even though it's a HABTM (so using a different input name, the above would normally be used)
     			//$jsBlock .= '$("#NodeCyclesContent").append(\'<div class="input select"><label for="CyclesNodeCycleId">Use Cycle</label><select style="margin-top: 10px;" name="data[CyclesNode][cycle_id]" id="CyclesNodeCycleId"><option value="">None</option></select></div>\'); ';  
 								
@@ -134,8 +135,11 @@ class CycleHookHelper extends AppHelper {
 				// Add input for display width and height
 				$jsBlock .= '$("#NodeCyclesContent").append(\'<div class="input text"><label for="CyclesNodeWidth">Display Width</label><input name="data[CyclesNode][width]" id="CyclesNodeWidth" type="text" maxlength="5" value="'.$cycle_width.'" /></div>\'); ';
 				$jsBlock .= '$("#NodeCyclesContent").append(\'<div class="input text"><label for="CyclesNodeHeight">Display Height</label><input name="data[CyclesNode][height]" id="CyclesNodeHeight" type="text" maxlength="5" value="'.$cycle_height.'" /></div>\'); ';
-				
-				//$jsBlock .= '$("#NodeCyclesContent").append(\'<input type="hidden" name="data[CyclesNode][cycle_id]" value="1" />\'); ';
+				if (count($cycles_selected) > 0) {
+					$jsBlock .= '$("#NodeCyclesContent").append(\'<input type="hidden" id="CyclesNodeCycleIdHidden" name="data[CyclesNode][cycle_id]" value="'.$cycles_selected[0].'" />\'); ';
+				} else {
+					$jsBlock .= '$("#NodeCyclesContent").append(\'<input type="hidden" id="CyclesNodeCycleIdHidden" name="data[CyclesNode][cycle_id]" value="" />\'); ';
+				}
 				
     			
     		$jsBlock .= ' });'; // close
