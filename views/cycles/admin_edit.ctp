@@ -76,14 +76,6 @@
 				        $rows = array();
 				        foreach($this->data['Node'] as $record) {
 				            $actions  = $html->link(__('Edit Node', true), array('plugin' => false, 'admin' => true, 'controller' => 'nodes', 'action' => 'edit', $record['id']));
-				            $actions .= '|';
-				            $actions .= ' ' . $html->link(__('Remove from Node', true), array(
-				                'controller' => 'cycles',
-				                'action' => 'remove_from_node',
-				                $record['id'],
-				                'token' => $this->params['_Token']['key'],
-				            ), null, __('Are you sure? This will not delete the cycle or any cycle records, only the association to this node.', true));
-
 				            $rows[] = array(
 				                $record['id'],
 				                $html->link($record['title'], $record['path'], array('target' => '_blank')),
