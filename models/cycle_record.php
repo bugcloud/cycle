@@ -21,6 +21,11 @@ class CycleRecord extends CycleAppModel {
 				),
 				'allowedMime' => array('image/jpeg', 'image/pjpeg', 'image/png', 'image/gif'),
 				'allowedExt' => array('.jpg', '.jpeg', '.png', '.gif'),
+			),
+			'wav_path' => array(
+				'dir' => 'cycle_sounds',
+				'allowedMime' => array('audio/wav'),
+				'allowedExt' => array('.wav'),
 			)
 		)
 	);
@@ -44,6 +49,10 @@ class CycleRecord extends CycleAppModel {
         $image = Set::extract('/CycleRecord/path', $record);
         if(is_file(WWW_ROOT.'cycle_images'.DS.$image[0])) {        
         	@unlink(WWW_ROOT.'cycle_images'.DS.$image[0]);
+        }        
+        $sound = Set::extract('/CycleRecord/wav_path', $record);
+        if(is_file(WWW_ROOT.'cycle_sounds'.DS.$sound[0])) {        
+        	@unlink(WWW_ROOT.'cycle_sounds'.DS.$sound[0]);
         }        
         return true;
 	}

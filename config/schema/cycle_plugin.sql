@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `cycle_records` (
   `caption` text character set utf8 collate utf8_unicode_ci,
   `link` varchar(200) character set utf8 collate utf8_unicode_ci default NULL,
   `path` varchar(255) character set utf8 collate utf8_unicode_ci default NULL,
+  `wav_path` varchar(255) character set utf8 collate utf8_unicode_ci default NULL,
   `mime_type` varchar(50) character set utf8 collate utf8_unicode_ci default NULL,
   `created` timestamp NULL default NULL,
   `updated` timestamp NOT NULL default '0000-00-00 00:00:00',

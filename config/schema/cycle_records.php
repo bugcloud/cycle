@@ -17,6 +17,7 @@ class CycleRecordsSchema extends CakeSchema {
 		'caption' => array('type' => 'text', 'null' => true, 'default' => NULL, 'length' => NULL),
 		'link' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 200),
 		'path' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 255),
+		'wav_path' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 255),
 		'mime_type' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 50),
 		'created' => array('type' => 'timestamp', 'null' => true, 'default' => NULL, 'length' => NULL),
 		'updated' => array('type' => 'timestamp', 'null' => false, 'default' => '0000-00-00 00:00:00', 'length' => NULL)
