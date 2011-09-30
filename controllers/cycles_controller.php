@@ -64,7 +64,7 @@ class CyclesController extends CycleAppController {
             		),
             		'CycleRecord' => array(
             			'fields' => array(
-            				'CycleRecord.id','CycleRecord.title','CycleRecord.caption','CycleRecord.path','CycleRecord.link'
+            				'CycleRecord.id','CycleRecord.title','CycleRecord.caption','CycleRecord.path','CycleRecord.wav_path','CycleRecord.link'
             			)
             		)
             	)

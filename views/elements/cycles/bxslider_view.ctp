@@ -50,6 +50,9 @@ if(!$letterbox_color) { $letterbox_color = array(0,0,0); } // black if not speci
         <strong><?php echo $record['title']; ?></strong><br />
         <?php echo $record['caption']; ?>
       </div>-->
+      <?php if ($record['wav_path'] != null && $record['wav_path'] != '') { ?>
+        <audio src="<?php echo '/cycle_sounds/'.$record['wav_path']; ?>" preload="auto" style="display:none;">&nbsp;</audio>
+      <?php } ?>
     </li>  
     <?php } ?>   
 </ul>
@@ -68,7 +71,18 @@ $(document).ready(function(){
     auto: <?php echo ($autoplay)? 'true' : 'false';?>,
     captions: true,
     speed: 800,
-    pager: true
+    pager: true,
+    onAfterSlide: function(currentSlideNumber, totalSlideQty, currentSlideHtmlObject){
+      var now = $(currentSlideHtmlObject);
+      var audio = now.find('audio:first');
+      if (audio && audio.size() > 0) {
+        var src = audio.attr('src');
+        if (src) {
+          var player = new Audio(src);
+          player.play();
+        }
+      }
+    }
   });
 });
 </script>
